@@ -19,6 +19,7 @@ defmodule KVServer.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     [applications: [:logger, :kv],
+     env: [port: 4040],
      mod: {KVServer, []}]
   end
 
