@@ -50,6 +50,10 @@ defmodule KVServer do
     :gen_tcp.send(socket, text)
   end
 
+  defp write_line(socket, {:error, :not_found}) do
+    :gen_tcp.send(socket, "NOT FOUND\r\n")
+  end
+
   defp write_line(socket, {:error, :unknown_command}) do
     # Known error. Write to the client.
     :gen_tcp.send(socket, "UNKNOWN COMMAND\r\n")
